@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Mārtiņš Putnis, mp13031">
+        <title>Superb Car Auction Magnificence</title>
+        <link rel="icon" type="image/x-icon" href="images/logos/favi.png">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="cars.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul id="navmenu">
+                    <li class="navmenu-item"><a href="#home">Home</a></li>
+                    <li class="navmenu-item"><a href="#auction">Auction</a></li>
+                    <li class="navmenu-item"><a href="#bid-aplication-container">Bid Form</a></li>
+                    <li class="navmenu-item"><a href="#about-us" onclick="document.getElementById('secret').style.display = 'block'">About Us</a></li>
+                </ul>
+                <img id="car-logo" src="images/logos/istockphoto-1254555114-612x612.jpg" alt="car-shape">
+            </nav>
+            <div id="logo">
+                <img id="img-logo" src="images/logos/logo.png" alt="logo">
+            </div>
+        </header>
+        <div class="flex-container">
+            <div class="adspace">
+                <a href="#home">
+                    <img src="images/ads/demorfi-Food-Ad-Designs-768x1024.webp" alt="ad">
+                </a>
+            </div>
+            <div id="home" class="flex-container">
+                <div id="auction" class="flex-container">
+                    <div id="filter-container">
+                        <form id="filter">
+                            <fieldset>
+                                <legend>Model Year</legend>
+                                <label for="min-model-year">From</label>
+                                <select id="min-model-year" name="min year">
+                                    <option>Any</option>
+                                </select><br>
+                                <label for="max-model-year">To</label>
+                                <select id="max-model-year" name="max year">
+                                    <option>Any</option>
+                                </select>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Current Bid</legend>
+                                <label for="min-bid">From</label>
+                                <select id="min-bid" name="min bid">
+                                    <option>Any</option>
+                                </select><br>
+                                <label for="max-bid">To</label>
+                                <select id="max-bid" name="max bid">
+                                    <option>Any</option>
+                                </select>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Mileage</legend>
+                                <label for="min-mileage">From</label>
+                                <select id="min-mileage" name="min start price">
+                                    <option>Any</option>
+                                </select><br>
+                                <label for="max-mileage">To</label>
+                                <select id="max-mileage" name="max start price">
+                                    <option>Any</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                        <button id="set-filter">Filter</button>
+                        <button id="reset-filter">Reset</button>
+                    </div>
+                    <main class="flex-container">
+                    </main>
+                </div>
+                <aside>
+                    <div id="top-auctions">
+                        <h3>Top Auctions</h3>
+                        <ol>
+                            <li>2018 Porsche Panamera 4: &euro; 69,900</li>
+                            <li>2018 Mercedes-Benz S400: &euro; 66,000</li>
+                            <li>2015 Ford Mustang RS3: &euro; 60,000</li>
+                            <li>2016 Mercedes-Benz C63 AMG: &euro; 55,001</li>
+                            <li>2012 Mercedes-Benz G 350 Brabus: &euro; 55,000</li>
+                            <li>2023 DFSK Seres 5: &euro; 51,909</li>
+                            <li>2018 Audi A8 Quattro: &euro; 45,900</li>
+                            <li>2019 Land Rover Range Rover Velar: &euro; 40,000</li>
+                            <li>2019 BMW X3 M40: &euro; 39,900</li>
+                            <li>2004 Bentley Continental GT: &euro; 39,000</li>
+                        </ol>
+                    </div>
+                    <div id="bid-form-container">
+                        <form id="bid-form" action="https://www.w3schools.com/action_page.php" target="_blank" method="get">
+                            <label for="auctionID">Auction ID:</label><br>
+                            <input type="text" id="auctionID" name="auctionID" readonly pattern="^\d{4}$"
+                            title="Click on a car" required minlength="4" maxlength="4"><br>
+                            <h3 id="car-name"></h3>
+                            <label for="bid">Your Bid:</label><br>
+                            <input type="number" id="bid" name="bid" step="100" required min="100"><br>
+                            <p class="error"></p>
+                            <label for="card-number">Credit card number:</label><br>
+                            <input type="text" id="card-number" name="card-number" required 
+                            size="20" maxlength="16"><br>
+                            <p class="error"></p>
+                            <label for="card-name">Name on your card:</label><br>
+                            <input type="text" id="card-name" name="card-name" required 
+                            placeholder="Jhon Doe" maxlength="20"><br>
+                            <p class="error"></p>
+                            
+                            <label for="expiration-date">Credit card expiration date:</label><br>
+                            <input type="text" id="expiration-date" name="expiration-date" required 
+                            size="5" maxlength="5" placeholder="mm/yy" pattern="^(0[1-9]|1[0-2])\/\d{2}$" title="MM/YY"><br>
+                            <p class="error"></p>
+                            
+                            <label for="cvv">Enter CVV:</label><br>
+                            <input type="text" id="cvv" name="cvv" required size="4" maxlength="3"
+                            pattern="^\d{3}$" title="Enter 3 digits from the back of your card"><br>
+                            <p class="error"></p>
+                            <label for="email">Your E-mail:</label><br>
+                            <input type="email" id="email" name="email" required 
+                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="f.e.: name@host.com"><br>
+                            <p class="error"></p>
+                            <input type="checkbox" id="consent" name="consent" checked disabled>
+                            <label for="consent">No Terms and Conditions apply</label><br>
+                            <input type="submit" value="Submit" id="submit">
+                        </form>
+                    </div>
+                </aside>
+            </div>
+            <div class="adspace">
+                <a href="#home">
+                    <img src="images/ads/nutella-Food-Ad-Designs-792x1024.webp" alt="ad">
+                </a>
+            </div>
+        </div>
+        <footer id="about-us">
+            <h1>Superb Car Auction Magnificence</h1>
+            <p id="secret">
+            Superb Car Auction Magnificence<small>( SCAM for short)</small> is a long lasting, tradition
+            rich and utterly proffessional car auction website established in <s>January of 2024</s>.
+            SCAM has <u>NOT</u> been created for the sole purpose of aquiring your credit card 
+            information, do <u>NOT</u> believe anyone who might tell you otherwise.
+            </p>
+        </footer>
+    </body>
+</html>
